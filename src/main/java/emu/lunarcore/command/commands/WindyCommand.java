@@ -1,11 +1,11 @@
-package emu.grasscutter.command.commands;
+package emu.LunarCore.command.commands;
 
-import emu.grasscutter.net.packet.BasePacket;
-import emu.grasscutter.server.packet.send.PacketWindSeedClientNotify;
+import emu.LunarCore.net.packet.BasePacket;
+import emu.LunarCore.server.packet.send.PacketWindSeedClientNotify;
 import java.util.List;
-import emu.grasscutter.game.player.Player;
-import emu.grasscutter.command.Command;
-import emu.grasscutter.command.CommandHandler;
+import emu.LunarCore.game.player.Player;
+import emu.LunarCore.command.Command;
+import emu.LunarCore.command.CommandHandler;
 
 @Command(label = "windy", usage = "windy", aliases = { "w" }, permission = "player.windy", permissionTargeted = "player.windy.others")
 public class WindyCommand implements CommandHandler
