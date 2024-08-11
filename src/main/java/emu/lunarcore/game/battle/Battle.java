@@ -20,10 +20,7 @@ import emu.lunarcore.proto.BattleTargetOuterClass.BattleTarget;
 import emu.lunarcore.proto.SceneBattleInfoOuterClass.SceneBattleInfo;
 import emu.lunarcore.proto.SceneBattleInfoOuterClass.SceneBattleInfo.BattleTargetInfoEntry;
 import emu.lunarcore.util.Utils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,9 +30,9 @@ public class Battle {
     private final Player player;
     private final PlayerLineup lineup;
     private final List<EntityMonster> npcMonsters;
-    private final List<MazeBuff> buffs;
     private final List<BattleMonsterWave> waves;
     private final List<GameItem> drops;
+    private final Int2ObjectMap<MazeBuff> buffs;
     private final long timestamp;
     
     private BattleStage stage; // Main battle stage
@@ -60,7 +57,7 @@ public class Battle {
         this.player = player;
         this.lineup = lineup;
         this.npcMonsters = new ArrayList<>();
-        this.buffs = new ArrayList<>();
+        this.buffs = new Int2ObjectLinkedOpenHashMap<>();
         this.waves = new ArrayList<>();
         this.drops = new ArrayList<>();
         this.timestamp = System.currentTimeMillis();
@@ -131,7 +128,10 @@ public class Battle {
             var wave = new BattleMonsterWave(stage);
             wave.getMonsters().addAll(stageMonsterWave);
             
-            // Handle npc monster
+            // Add wave to battle
+            this.getWaves().add(wave);
+            
+            // Add buffs from npc monsters
             if (npcMonster != null) {
                 // Set wave custom level
                 wave.setCustomLevel(npcMonster.getCustomLevel());
@@ -139,9 +139,6 @@ public class Battle {
                 // Handle monster buffs
                 npcMonster.applyBuffs(this, this.getWaves().size());
             }
-            
-            // Finally add wave to battle
-            this.getWaves().add(wave);
         }
     }
     
@@ -190,12 +187,12 @@ public class Battle {
     }
     
     public MazeBuff addBuff(MazeBuff buff) {
-        this.buffs.add(buff);
+        this.buffs.put(buff.getId(), buff);
         return buff;
     }
     
     public boolean hasBuff(int buffId) {
-        return this.buffs.stream().filter(buff -> buff.getId() == buffId).findFirst().isPresent();
+        return this.buffs.containsKey(buffId);
     }
     
     public void clearBuffs() {
@@ -250,7 +247,7 @@ public class Battle {
         }
         
         // Buffs
-        for (MazeBuff buff : this.getBuffs()) {
+        for (var buff : this.getBuffs().values()) {
             proto.addBuffList(buff.toProto());
         }
         

@@ -19,22 +19,19 @@ public final class RogueRoomOuterClass {
     private static final long serialVersionUID = 0L;
 
     /**
-     * <code>optional uint32 site_id = 5;</code>
+     * <code>optional uint32 site_id = 1;</code>
      */
     private int siteId;
 
     /**
-     * <pre>
-     * uint32 LELFKONOLPP = 3;
-     * </pre>
-     *
-     * <code>optional uint32 room_id = 15;</code>
+     * <code>optional uint32 room_id = 12;</code>
      */
     private int roomId;
 
     /**
      * <pre>
-     * RogueRoomStatus OABFMKCFLGC = 10;
+     *  uint32 MGAHHMCOGKK = 14;
+     *  RogueRoomStatus GCLIKAAOKJL = 3; // GCLIKAAOKJL
      * </pre>
      *
      * <code>optional .RogueRoomStatus room_status = 10;</code>
@@ -52,7 +49,7 @@ public final class RogueRoomOuterClass {
     }
 
     /**
-     * <code>optional uint32 site_id = 5;</code>
+     * <code>optional uint32 site_id = 1;</code>
      * @return whether the siteId field is set
      */
     public boolean hasSiteId() {
@@ -60,7 +57,7 @@ public final class RogueRoomOuterClass {
     }
 
     /**
-     * <code>optional uint32 site_id = 5;</code>
+     * <code>optional uint32 site_id = 1;</code>
      * @return this
      */
     public RogueRoom clearSiteId() {
@@ -70,7 +67,7 @@ public final class RogueRoomOuterClass {
     }
 
     /**
-     * <code>optional uint32 site_id = 5;</code>
+     * <code>optional uint32 site_id = 1;</code>
      * @return the siteId
      */
     public int getSiteId() {
@@ -78,7 +75,7 @@ public final class RogueRoomOuterClass {
     }
 
     /**
-     * <code>optional uint32 site_id = 5;</code>
+     * <code>optional uint32 site_id = 1;</code>
      * @param value the siteId to set
      * @return this
      */
@@ -89,11 +86,7 @@ public final class RogueRoomOuterClass {
     }
 
     /**
-     * <pre>
-     * uint32 LELFKONOLPP = 3;
-     * </pre>
-     *
-     * <code>optional uint32 room_id = 15;</code>
+     * <code>optional uint32 room_id = 12;</code>
      * @return whether the roomId field is set
      */
     public boolean hasRoomId() {
@@ -101,11 +94,7 @@ public final class RogueRoomOuterClass {
     }
 
     /**
-     * <pre>
-     * uint32 LELFKONOLPP = 3;
-     * </pre>
-     *
-     * <code>optional uint32 room_id = 15;</code>
+     * <code>optional uint32 room_id = 12;</code>
      * @return this
      */
     public RogueRoom clearRoomId() {
@@ -115,11 +104,7 @@ public final class RogueRoomOuterClass {
     }
 
     /**
-     * <pre>
-     * uint32 LELFKONOLPP = 3;
-     * </pre>
-     *
-     * <code>optional uint32 room_id = 15;</code>
+     * <code>optional uint32 room_id = 12;</code>
      * @return the roomId
      */
     public int getRoomId() {
@@ -127,11 +112,7 @@ public final class RogueRoomOuterClass {
     }
 
     /**
-     * <pre>
-     * uint32 LELFKONOLPP = 3;
-     * </pre>
-     *
-     * <code>optional uint32 room_id = 15;</code>
+     * <code>optional uint32 room_id = 12;</code>
      * @param value the roomId to set
      * @return this
      */
@@ -143,7 +124,8 @@ public final class RogueRoomOuterClass {
 
     /**
      * <pre>
-     * RogueRoomStatus OABFMKCFLGC = 10;
+     *  uint32 MGAHHMCOGKK = 14;
+     *  RogueRoomStatus GCLIKAAOKJL = 3; // GCLIKAAOKJL
      * </pre>
      *
      * <code>optional .RogueRoomStatus room_status = 10;</code>
@@ -155,7 +137,8 @@ public final class RogueRoomOuterClass {
 
     /**
      * <pre>
-     * RogueRoomStatus OABFMKCFLGC = 10;
+     *  uint32 MGAHHMCOGKK = 14;
+     *  RogueRoomStatus GCLIKAAOKJL = 3; // GCLIKAAOKJL
      * </pre>
      *
      * <code>optional .RogueRoomStatus room_status = 10;</code>
@@ -169,7 +152,8 @@ public final class RogueRoomOuterClass {
 
     /**
      * <pre>
-     * RogueRoomStatus OABFMKCFLGC = 10;
+     *  uint32 MGAHHMCOGKK = 14;
+     *  RogueRoomStatus GCLIKAAOKJL = 3; // GCLIKAAOKJL
      * </pre>
      *
      * <code>optional .RogueRoomStatus room_status = 10;</code>
@@ -206,7 +190,8 @@ public final class RogueRoomOuterClass {
 
     /**
      * <pre>
-     * RogueRoomStatus OABFMKCFLGC = 10;
+     *  uint32 MGAHHMCOGKK = 14;
+     *  RogueRoomStatus GCLIKAAOKJL = 3; // GCLIKAAOKJL
      * </pre>
      *
      * <code>optional .RogueRoomStatus room_status = 10;</code>
@@ -290,11 +275,11 @@ public final class RogueRoomOuterClass {
     @Override
     public void writeTo(final ProtoSink output) throws IOException {
       if ((bitField0_ & 0x00000001) != 0) {
-        output.writeRawByte((byte) 40);
+        output.writeRawByte((byte) 8);
         output.writeUInt32NoTag(siteId);
       }
       if ((bitField0_ & 0x00000002) != 0) {
-        output.writeRawByte((byte) 120);
+        output.writeRawByte((byte) 96);
         output.writeUInt32NoTag(roomId);
       }
       if ((bitField0_ & 0x00000004) != 0) {
@@ -325,16 +310,16 @@ public final class RogueRoomOuterClass {
       int tag = input.readTag();
       while (true) {
         switch (tag) {
-          case 40: {
+          case 8: {
             // siteId
             siteId = input.readUInt32();
             bitField0_ |= 0x00000001;
             tag = input.readTag();
-            if (tag != 120) {
+            if (tag != 96) {
               break;
             }
           }
-          case 120: {
+          case 96: {
             // roomId
             roomId = input.readUInt32();
             bitField0_ |= 0x00000002;
